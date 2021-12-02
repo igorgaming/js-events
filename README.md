@@ -1,16 +1,16 @@
 # Js events
 
-Its a small package for easy use of custom events in js.
+Small package for easy use of custom events in js.
 
 # Available methods
 
-`constructor(singleEvents = [], massEvents = [])` - Constructor that calls `.setEvents()`.
-`setEvents(singleEvents, massEvents)` - Set single and mass events.
-`on(events, callback, canUnbind = true, unbindAfterCall = false)` - Bind handler function to one or more events.
-`one(events, callback, canUnbind = true)` - Bind handler function to one or more events and remove it after first call.
-`off(events = null, callback = null)` - Remove a handler from one or more events.
-`has(event)` - Checks whether at least one handler is assigned to the specified event.
-`call(event, args = [], thisArg = this)` - Call all handlers for the specific event and get their return values.
+- `constructor(singleEvents = [], massEvents = [])` - Constructor that calls `.setEvents()`.
+- `setEvents(singleEvents, massEvents)` - Set single and mass events.
+- `on(events, callback, canUnbind = true, unbindAfterCall = false)` - Bind handler function to one or more events.
+- `one(events, callback, canUnbind = true)` - Bind handler function to one or more events and remove it after first call.
+- `off(events = null, callback = null)` - Remove a handler from one or more events.
+- `has(event)` - Checks whether at least one handler is assigned to the specified event.
+- `call(event, args = [], thisArg = this)` - Call all handlers for the specific event and get their return values.
 
 # Base usage
 ```
@@ -35,17 +35,19 @@ class YourClass {
 
     // You should also define the methods below if your class supports the ability to bind from the outside.
     // This is useful if you are developing a package that will contain events that users can bind to.
-    on(events, callback, canUnbind) {
+    on(events, callback, canUnbind = true) {
         this._bindable.on(events, callback, canUnbind);
 
         return this;
     }
-    one(events, callback, canUnbind) {
+    one(events, callback, canUnbind = true) {
         this._bindable.one(events, callback, canUnbind);
+
         return this;
     }
-    off(event, callback) {
+    off(event = null, callback = null) {
         this._bindable.off(event, callback);
+
         return this;
     }
     //#endregion
@@ -53,6 +55,7 @@ class YourClass {
     method() {
         // Here we check for handlers for a specific event and, if there are any, call them.
         // We can also pass arg `thisArg` so that the handler references our class and not `BindableObject`.
+        // Note: If you don't need to know if a handler exists, you don't have to call `.has()`
         if (this._bindable.has('showed')) {
             let result = this._bindable.call('showed', [], this)[0];  // get result only from first handler
             // ...
@@ -93,7 +96,7 @@ class YourClass2 extends YourClass {
 ```
 
 # Using getters to simplify extending
-As you could see in the example above, we need to call `.setEvents()` every time we expand the list of events when extends the parent class.
+As you could see in the example above, we need to call `.setEvents()` in `constructor()` every time we expand the list of events when extends the parent class.
 This is not very convenient, however, this is how classes work in javascript.
 We can get around this by using getters.
 This will avoid calling `.setEvents()` every time when extending parent class.
