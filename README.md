@@ -2,6 +2,10 @@
 
 Small package for easy use of custom events in js.
 
+# Documentation
+
+All available methods has JSDoc block even with `@example`.
+
 # Available methods
 
 - `constructor(singleEvents = [], massEvents = [])` - Constructor that calls `.setEvents()`.
@@ -9,10 +13,22 @@ Small package for easy use of custom events in js.
 - `on(events, callback, canUnbind = true, unbindAfterCall = false)` - Bind handler function to one or more events.
 - `one(events, callback, canUnbind = true)` - Bind handler function to one or more events and remove it after first call.
 - `off(events = null, callback = null)` - Remove a handler from one or more events.
-- `has(event)` - Checks whether at least one handler is assigned to the specified event.
+- `has(event)` - Checks whether at least one handler is bound to the specified event.
 - `call(event, args = [], thisArg = this)` - Call all handlers for the specific event and get their return values.
 
 # Base usage
+
+There are two types of events:
+- single events
+- mass events
+
+Single events allow bind to them only one handler, while mass events allow bind multiple handlers.
+
+When you bind a handler to single event second time, first handler will be removed.
+
+When you bind a handler to mass event, first handler will not be removed.
+Also, the call of all handlers occurs sequentially relative to when they were bound (the bound ones before are called first).
+
 ```
 class YourClass {
     //#region Bindable
@@ -68,7 +84,6 @@ class YourClass {
 
 ```
 class YourClass2 extends YourClass {
-    // Добавляем 'newEvent' к существующим ивентам для массовой привязки.
     // Adding event 'newEvent' to existing events.
     _massEvents = [
         ...super.massEvents,  // we save all the events that are present in the `YourClass`
@@ -151,8 +166,8 @@ class SomeClass {
     // setup events, etc.
     ...
 
-    handler = function(arg) {
-        console.log(arg);
+    handler = function() {
+        ...
     }
 
     method() {
