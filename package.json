@@ -1,0 +1,24 @@
+{
+  "name": "js-events",
+  "version": "1.0.0",
+  "description": "A small package for easy use of custom events in js.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/igorgaming/js-events.git"
+  },
+  "keywords": [
+    "js",
+    "events",
+    "bindable"
+  ],
+  "author": "Igor Sorokin <gosha.sorokin.2002@mail.ru>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/igorgaming/js-events/issues"
+  },
+  "homepage": "https://github.com/igorgaming/js-events#readme"
+}
