@@ -6,6 +6,8 @@ Small package for easy use of custom events in js.
 
 All available methods has JSDoc block even with `@example`.
 
+Available methods listed below.
+
 # Available methods
 
 - `constructor(singleEvents = [], massEvents = [])` - Constructor that calls `.setEvents()`.
@@ -16,7 +18,7 @@ All available methods has JSDoc block even with `@example`.
 - `has(event)` - Checks whether at least one handler is bound to the specified event.
 - `call(event, args = [], thisArg = this)` - Call all handlers for the specific event and get their return values.
 
-# Base usage
+# Basic usage
 
 There are two types of events:
 - single events
@@ -27,7 +29,7 @@ Single events allow bind to them only one handler, while mass events allow bind 
 When you bind a handler to single event second time, first handler will be removed.
 
 When you bind a handler to mass event, first handler will not be removed.
-Also, the call of all handlers occurs sequentially relative to when they were bound (the bound ones before are called first).
+Also, the call of all handlers occurs sequentially relative to when they were bound.
 
 ```
 class YourClass {
@@ -86,7 +88,7 @@ class YourClass {
 class YourClass2 extends YourClass {
     // Adding event 'newEvent' to existing events.
     _massEvents = [
-        ...super.massEvents,  // we save all the events that are present in the `YourClass`
+        ...super.massEvents,  // we use this to get existing events in parent class and add new events to them
         'newEvent',
     ];
 
@@ -95,8 +97,7 @@ class YourClass2 extends YourClass {
 
         // Setting new `BindableObject` events.
         // When adding new events in child classes, we need to call this method in the constructor.
-        // However, we can use the getters instead of the usual properties (in both parent and child).
-        // Then we won't have to call this method, and everything will work right away.
+        // However, we can simplify extending by using getters. Check example below.
 
         this._bindable.setEvents(this._singleEvents, this._massEvents);
     }
@@ -112,7 +113,7 @@ class YourClass2 extends YourClass {
 
 # Using getters to simplify extending
 As you could see in the example above, we need to call `.setEvents()` in `constructor()` every time we expand the list of events when extends the parent class.
-This is not very convenient, however, this is how classes work in javascript.
+This is not very convenient, however, this is how classes works in javascript.
 We can get around this by using getters.
 This will avoid calling `.setEvents()` every time when extending parent class.
 
