@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A small package for easy use of custom events in js.",
   "main": "dist/index.js",
+  "types": "types/index.d.ts",
   "scripts": {
     "test": "mocha --require @babel/register --recursive",
     "eslint": "eslint **/**.js --fix",
@@ -16,6 +17,10 @@
     "js",
     "events",
     "bindable"
+  ],
+  "files": [
+    "dist",
+    "types"
   ],
   "author": "Igor Sorokin <gosha.sorokin.2002@mail.ru>",
   "license": "MIT",
