@@ -2,6 +2,10 @@
 
 Small package for easy use of custom events in js.
 
+# Installation
+
+Run `npm i js-events-dispatcher` and use `import BindableObject from 'js-events-dispatcher'`.
+
 # Documentation
 
 All available methods has JSDoc block even with `@example`.
@@ -36,7 +40,7 @@ When you bind a handler to mass event, first handler will not be removed.
 Also, the call of all handlers occurs sequentially relative to when they were bound.
 
 ```
-import BindableObject from 'js-events';
+import BindableObject from 'js-events-dispatcher';
 
 class YourClass {
     //#region Bindable
@@ -91,7 +95,7 @@ class YourClass {
 # Extending classes with events
 
 ```
-import BindableObject from 'js-events';
+import BindableObject from 'js-events-dispatcher';
 
 class YourClass2 extends YourClass {
     // Adding event 'newEvent' to existing events.
@@ -126,7 +130,7 @@ We can get around this by using getters.
 This will avoid calling `.setEvents()` every time when extending parent class.
 
 ```
-import BindableObject from 'js-events';
+import BindableObject from 'js-events-dispatcher';
 
 class YourClass {
     get singleEvents() {
@@ -173,7 +177,7 @@ but you can still do this by passing your handler as the second argument to `off
 For example:
 
 ```
-import BindableObject from 'js-events';
+import BindableObject from 'js-events-dispatcher';
 
 class SomeClass {
     // setup events, etc.
