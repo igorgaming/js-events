@@ -18,6 +18,10 @@ Available methods listed below.
 - `has(event)` - Checks whether at least one handler is bound to the specified event.
 - `call(event, args = [], thisArg = this)` - Call all handlers for the specific event and get their return values.
 
+# Browsers support
+
+This package uses preset `@babel/preset-env` of [babel](https://github.com/babel/babel) to transform js code for old browsers.
+
 # Basic usage
 
 There are two types of events:

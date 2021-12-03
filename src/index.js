@@ -1,4 +1,4 @@
-import { wrap, isEmpty } from "./utils/utils.js";
+import { wrap, splitString, isEmpty } from './utils/utils';
 
 export default class BindableObject {
     constructor(singleEvents = [], massEvents = []) {
@@ -6,6 +6,7 @@ export default class BindableObject {
     }
 
     /** An array of events to which only one handler can be bound.
+     *
      * @example
      * _singleEvents = {
      *     'show',
@@ -86,7 +87,7 @@ export default class BindableObject {
      * this.call('close');                      // callbacks: 0
      */
     on(events, callback, canUnbind = true, unbindAfterCall = false) {
-        events = events.split(' ');
+        events = splitString(events);
 
         for (const event of events) {
             if (this._massEvents.includes(event)) {
@@ -153,7 +154,7 @@ export default class BindableObject {
         // If events no specified we just get all existing events.
         events = isEmpty(events)
             ? Object.keys(this._bindedEvents)
-            : events.split(' ');
+            : splitString(events);
 
         for (const event of events) {
             if (!this.has(event)) {

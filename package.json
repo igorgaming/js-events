@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "mocha --require @babel/register --recursive",
-    "prebuild": "rimraf dist",
+    "eslint": "eslint **/**.js --fix",
     "build": "babel --copy-files --out-dir dist --ignore *.test.js src"
   },
   "repository": {
@@ -24,13 +24,11 @@
   },
   "homepage": "https://github.com/igorgaming/js-events#readme",
   "devDependencies": {
+    "@babel/cli": "^7.0.0",
     "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.5.4",
     "@babel/register": "^7.4.4",
-    "babel-cli": "^6.26.0",
-    "babel-preset-es2015": "^6.24.1",
-    "mocha": "^9.1.3",
-    "nyc": "^15.1.0",
-    "rimraf": "^3.0.2"
+    "eslint": "^8.3.0",
+    "mocha": "^9.1.3"
   }
 }
