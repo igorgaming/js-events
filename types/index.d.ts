@@ -1,4 +1,4 @@
-declare module "js-events" {
+declare module "js-events-dispatcher" {
     class BindableObject {
         constructor(singleEvents?: string[], massEvents?: string[]);
 
