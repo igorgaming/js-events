@@ -51,8 +51,8 @@ var BindableObject = /*#__PURE__*/function () {
    *     'show',
    *     'close'
    * }
-   * this.on('show', callback)
-   * this.on('close', callback)
+   * this.on('show', callback);
+   * this.on('close', callback);
    */
 
 
