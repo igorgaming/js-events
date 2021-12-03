@@ -52,7 +52,7 @@ export default class BindableObject {
      * @param {string[]} singleEvents An array of events to which only one handler can be bound.
      * @param {string[]} massEvents An array of events to which multiple handlers can be bound.
      */
-    setEvents(singleEvents, massEvents) {
+    setEvents(singleEvents = [], massEvents = []) {
         this._singleEvents = singleEvents;
         this._massEvents = massEvents;
     }

@@ -36,6 +36,8 @@ When you bind a handler to mass event, first handler will not be removed.
 Also, the call of all handlers occurs sequentially relative to when they were bound.
 
 ```
+import BindableObject from 'js-events';
+
 class YourClass {
     //#region Bindable
     // Init an array of events to which only one handler can be bound.
@@ -89,6 +91,8 @@ class YourClass {
 # Extending classes with events
 
 ```
+import BindableObject from 'js-events';
+
 class YourClass2 extends YourClass {
     // Adding event 'newEvent' to existing events.
     _massEvents = [
@@ -122,6 +126,8 @@ We can get around this by using getters.
 This will avoid calling `.setEvents()` every time when extending parent class.
 
 ```
+import BindableObject from 'js-events';
+
 class YourClass {
     get singleEvents() {
         return [
@@ -167,6 +173,8 @@ but you can still do this by passing your handler as the second argument to `off
 For example:
 
 ```
+import BindableObject from 'js-events';
+
 class SomeClass {
     // setup events, etc.
     ...
@@ -176,11 +184,11 @@ class SomeClass {
     }
 
     method() {
-        this.on('test', handler, false);
+        this._bindable.on('test', handler, false);
     }
 
     method2() {
-        this.off('test', handler);
+        this._bindable.off('test', handler);
     }
 }
 
