@@ -1,14 +1,16 @@
 declare module "js-events" {
     class BindableObject {
+        constructor(singleEvents?: string[], massEvents?: string[]);
+
         /** An array of events to which only one handler can be bound.
          *
          * @example
          * _singleEvents = {
          *     'show',
-         *     'close'
+         *     'close',
          * }
-         * this.on('show', callback)
-         * this.on('close', callback)
+         * this.on('show', callback);
+         * this.on('close', callback);
          */
         _singleEvents;
 
@@ -19,8 +21,8 @@ declare module "js-events" {
          *     'showed',
          *     'closed',
          * }
-         * this.on('showed', callback)
-         * this.on('closed', callback)
+         * this.on('showed', callback);
+         * this.on('closed', callback);
          */
         _massEvents;
 

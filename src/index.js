@@ -12,8 +12,8 @@ export default class BindableObject {
      *     'show',
      *     'close'
      * }
-     * this.on('show', callback)
-     * this.on('close', callback)
+     * this.on('show', callback);
+     * this.on('close', callback);
      */
     _singleEvents = [];
 
@@ -23,8 +23,8 @@ export default class BindableObject {
      *     'showed',
      *     'closed',
      * }
-     * this.on('showed', callback)
-     * this.on('closed', callback)
+     * this.on('showed', callback);
+     * this.on('closed', callback);
      */
     _massEvents = [];
 
@@ -42,8 +42,8 @@ export default class BindableObject {
      *     // The structure is a same as above, but there are more than one handler.
      *     eventName: [
      *         {...},
-     *         {...}
-     *     ]
+     *         {...},
+     *     ],
      * }
      */
     _bindedEvents = {};
